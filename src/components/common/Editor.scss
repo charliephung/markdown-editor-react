@@ -1,0 +1,37 @@
+.nav {
+    display: flex;
+    align-items: center;
+    color: #b8b8b8;
+    display: inline;
+
+    &__list {
+        background-color: #303030;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        cursor: pointer;
+        display: flex;
+
+        &:hover {
+            background-color: #a8a7a7;
+            color: #fff;
+        }
+
+        padding: 1rem 1.5rem
+    }
+}
+
+.textarea {
+    width: 100%;
+    height: calc(100% - 40px);
+    padding: 2rem;
+    resize: vertical;
+    font-size: 2rem;
+
+    &:focus {
+        outline: none;
+    }
+}

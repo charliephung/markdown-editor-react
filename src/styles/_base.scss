@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after,
+    {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+*:link,
+*:visited {
+    color: black;
+}
+
+ul {
+    list-style: none;
+}
+
+/* root */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+}
