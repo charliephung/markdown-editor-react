@@ -1,79 +1,6 @@
 import React, { Component, Fragment } from "react";
-import {
-  FaBold,
-  FaItalic,
-  FaHeading,
-  FaStrikethrough,
-  FaListUl,
-  FaListOl,
-  FaCheckSquare,
-  FaQuoteLeft,
-  FaQuoteRight,
-  FaCode,
-  FaLink,
-  FaImage
-} from "react-icons/fa";
 import { Nav, List, Item } from "components/nav/Nav";
 import PropTypes from "prop-types";
-
-const navItem = [
-  {
-    icon: <FaBold />,
-    add: "**strong text**",
-    focus: [2, 11]
-  },
-  {
-    icon: <FaItalic />,
-    add: "*emphasized text*",
-    focus: [1, 15]
-  },
-  {
-    icon: <FaHeading />,
-    add: "## Heading",
-    focus: [3, 13]
-  },
-  {
-    icon: <FaStrikethrough />,
-    add: "~~strikethrough text~~",
-    focus: [2, 18]
-  },
-  {
-    icon: <FaListUl />,
-    add: "- List item",
-    focus: [2, 13]
-  },
-  {
-    icon: <FaListOl />,
-    add: "1. List item",
-    focus: [3, 13]
-  },
-  {
-    icon: <FaCheckSquare />,
-    add: "- [ ] List item",
-    focus: [2, 13]
-  },
-  {
-    icon: [<FaQuoteLeft key={0} />, <FaQuoteRight key={1} />],
-    add: "> Blockquote",
-    focus: [2, 13]
-  },
-  {
-    icon: <FaCode />,
-    add: "```javascript\n    \n```",
-    focus: [15, 4]
-  },
-
-  {
-    icon: <FaLink />,
-    add: "[enter link description here](url)",
-    focus: [1, 27]
-  },
-  {
-    icon: <FaImage />,
-    add: "![enter image description here](url)",
-    focus: [2, 28]
-  }
-];
 
 export class Editor extends Component {
   state = {
@@ -108,6 +35,8 @@ export class Editor extends Component {
 
   onChange = (e, fns) => {
     const { onChange } = this.props;
+    console.log(e.target.value);
+
     if (!this.isControlled()) {
       this.setState(
         {
@@ -127,21 +56,19 @@ export class Editor extends Component {
   };
 
   render() {
-    const { cols, rows, disable } = this.props;
+    const { cols, rows, disable, item } = this.props;
     const value = this.isControlled() ? this.props.value : this.state.text;
     return (
       <Fragment>
         <Nav>
           <List>
-            {navItem.map((item, index) => {
+            {item.map((i, index) => {
               return (
                 <Item
-                  onClick={() =>
-                    !disable ? this.onAdd(item.add, item.focus) : {}
-                  }
+                  onClick={() => (!disable ? this.onAdd(i.add, i.focus) : {})}
                   key={index}
                 >
-                  {item.icon}
+                  {i.icon}
                 </Item>
               );
             })}
@@ -163,6 +90,7 @@ export class Editor extends Component {
 }
 
 Editor.propTypes = {
+  item: PropTypes.array,
   value: PropTypes.string,
   cols: PropTypes.string,
   rows: PropTypes.string,

@@ -41,6 +41,7 @@ export class Preview extends Component {
         ref={(this.div = React.createRef())}
         key="1"
         style={{
+          whiteSpace: "pre",
           margin: "3rem",
           visibility: raw ? "hidden" : "",
           position: "absolute",
